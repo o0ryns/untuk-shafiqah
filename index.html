@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk Shafiqah ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background: linear-gradient(120deg, #ff9a9e, #fbc2eb, #a18cd1);
+            background-size: 400% 400%;
+            animation: gradientMove 15s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            border-radius: 25px;
+            backdrop-filter: blur(15px);
+            width: 350px;
+            max-width: 85%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 10;
+            color: white;
+        }
+
+        img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid white;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background: white;
+            color: #ff6b81;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 15px;
+            transition: 0.3s;
+        }
+
+        /* BOX UTAMA - TEMPAT TEKS JALAN */
+        .scroll-box {
+            height: 280px;
+            overflow: hidden; /* Sembunyikan teks yang terkeluar atas bawah */
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            position: relative;
+            padding: 10px;
+        }
+
+        /* CONTAINER TEKS - YANG AKAN BERGERAK */
+        #textScroll {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            transition: transform 0.1s linear;
+            will-change: transform;
+            padding: 20px 0;
+        }
+
+        .text-scroll p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            text-align: center;
+            word-wrap: break-word; /* Paksa teks panjang turun bawah */
+            padding: 0 10px;
+        }
+
+        .text-scroll p:last-child {
+            font-weight: bold;
+            margin-top: 20px;
+            color: #ffe0e5;
+        }
+
+        .heart { position: absolute; animation: fall linear infinite; z-index: 1; }
+        @keyframes fall {
+            0% { transform: translateY(-10vh); opacity: 1; }
+            100% { transform: translateY(110vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<audio id="music" loop>
+    <source src="takkan hilang.mp4" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <img src="sepet.jpg" alt="Shafiqah">
+    <h2 style="font-size: 1.1em; margin-bottom: 15px;">For You Shafiqah Shahirah ❤️</h2>
+    <button onclick="startUltimate()">Klik sini 💌</button>
+
+    <div class="scroll-box">
+        <div id="textScroll" class="text-scroll">
+            </div>
+    </div>
+</div>
+
+<script>
+function startUltimate() {
+    document.getElementById("music").play();
+    
+    const textScroll = document.getElementById("textScroll");
+    textScroll.innerHTML = ""; // Clear content
+
+    const rawText = `hi babyy, i ada nak cakap something ni. baca elok elok tau babyy 
+
+    i kat sini actually nak mintak maaf dekat baby sebab i banyak layan baby teruk right? i kuat merajuk, suka silent treatment baby, suka marah marah baby kan? i mintak maaf tau baby☹️
+
+i buat macamtu bukan sebab tak sayang baby tapi i takbole handle emosi i🫠 i taktahu why malam ni i tiba ii rasa sedih teringat kat baby, teringat betapa teruknya i layan baby🥹
+
+but baby , baby always mengalah untuk i, walaupun sometimes baby kasar jugak dengan i but end up mesti baby yang akan mengalah demi i ☹️ i mintak maaf baby kalau selamani i layan baby teruk, buat baby nangis, overthinking and buat baby rasa i tak sayang baby ke tak pujuk baby ke 🥹 i mintak maaf tau🫠
+
+i sayang baby sangat, i taknak hilang baby☹️ biarla lagu ni, text i ni jadi bukti how much i love you baby.
+
+i know coding i ni simple i takde idea but this is a proof that i really really love you my baby🥺 
+
+i harap baby tak pendam apa apa dengan i tau, please just be honest with me.let me know all ur feelings baby🫠 i hope you will stay for a long time with me☹️ 
+
+happy happy dengan i celalu tau baby tau🤏🏻
+
+ilopeyouuu coo coo much babyy cepet i 💋😩🫰🏻🤍🤍
+
+your love - ririn
+
+SPECIAL FOR YOU SHAFIQAH SHAHIRAH <33 `;
+
+    // Masukkan teks ke dalam p tag
+    const lines = rawText.split('\n');
+    lines.forEach(line => {
+        if(line.trim() !== "") {
+            const p = document.createElement("p");
+            p.textContent = line;
+            textScroll.appendChild(p);
+        }
+    });
+
+    // START ANIMASI SCROLL
+    let boxHeight = 280;
+    let currentPos = boxHeight; // Mula dari bawah box
+    
+    function animate() {
+        currentPos -= 0.6; // Kelajuan scroll
+        textScroll.style.transform = `translateY(${currentPos}px)`;
+
+        // Berhenti bila teks dah habis lalu
+        if (currentPos > -(textScroll.scrollHeight + 20)) {
+            requestAnimationFrame(animate);
+        }
+    }
+    
+    requestAnimationFrame(animate);
+}
+
+// Hearts effect
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}, 600);
+</script>
+
+</body>
+</html>
